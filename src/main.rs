@@ -40,6 +40,7 @@ fn main() {
             .unwrap_or_else(|| Vec::new());
 
     for item in selected_items.iter() {
-        fs::write(format!("{}/.awsp", home.display()), item.output().to_string()).expect("Unable to write file");
+        let output = format!("AWS_PROFILE={}", item.output().to_string());
+        fs::write(format!("{}/.awsp", home.display()), output).expect("Unable to write file");
     }
 }
